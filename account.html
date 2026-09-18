@@ -4,6 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AURELIA — Konto</title>
 <link rel="stylesheet" href="style.css?v=account2026">
+<link rel="stylesheet" href="feedback.css?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <script>(function(){try{document.documentElement.dataset.theme=localStorage.getItem("aurelia-theme")||"light"}catch(e){document.documentElement.dataset.theme="light"}})();</script>
@@ -31,7 +32,7 @@
 <label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl"></label>
 <label>Hasło<input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="Minimum 6 znaków"></label>
 <label>Powtórz hasło<input name="passwordConfirm" type="password" autocomplete="new-password" required minlength="6" placeholder="Powtórz hasło"></label>
-<label class="account-consent"><input type="checkbox" required> Akceptuję zasady korzystania z konta.</label>
+<label class="account-consent" id="accountTerms"><input id="accountTermsCheckbox" type="checkbox" required> Akceptuję zasady korzystania z konta.</label>
 <button class="btn btn-dark" type="submit">Utwórz konto <span>→</span></button>
 </form>
 <form id="resetForm" class="account-form hidden">
@@ -61,5 +62,5 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js?v=2"></script>
 <script src="appearance.js"></script>
-<script src="account.js?v=1"></script>
+<script src="account.js?v=2"></script>
 </body></html>
