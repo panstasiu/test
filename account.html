@@ -21,21 +21,21 @@
 <section class="account-layout">
 <div class="account-card" id="authCard">
 <div class="account-tabs"><button class="account-tab active" data-auth-tab="login">Logowanie</button><button class="account-tab" data-auth-tab="register">Rejestracja</button></div>
-<form id="loginForm" class="account-form">
-<label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl"></label>
-<label>Hasło<input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Minimum 6 znaków"></label>
+<form id="loginForm" class="account-form" novalidate>
+<label>E-mail<input name="email" type="email" autocomplete="email" placeholder="twoj@email.pl"></label>
+<label>Hasło<input name="password" type="password" autocomplete="current-password" placeholder="Minimum 6 znaków"></label>
 <button class="btn btn-dark" type="submit">Zaloguj się <span>→</span></button>
 <button class="account-link" type="button" id="showReset">Nie pamiętasz hasła?</button>
 </form>
-<form id="registerForm" class="account-form hidden">
+<form id="registerForm" class="account-form hidden" novalidate>
 <div class="account-form-grid"><label>Imię<input name="firstName" autocomplete="given-name" required placeholder="Jan"></label><label>Nazwisko<input name="lastName" autocomplete="family-name" required placeholder="Kowalski"></label></div>
 <label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl"></label>
-<label>Hasło<input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="Minimum 6 znaków"></label>
+<label>Hasło<input name="password" type="password" autocomplete="new-password" placeholder="Minimum 6 znaków"></label>
 <label>Powtórz hasło<input name="passwordConfirm" type="password" autocomplete="new-password" required minlength="6" placeholder="Powtórz hasło"></label>
-<label class="account-consent" id="accountTerms"><input id="accountTermsCheckbox" type="checkbox" required> Akceptuję zasady korzystania z konta.</label>
+<label class="account-consent" id="accountTerms"><input id="accountTermsCheckbox" type="checkbox"> Akceptuję zasady korzystania z konta.</label>
 <button class="btn btn-dark" type="submit">Utwórz konto <span>→</span></button>
 </form>
-<form id="resetForm" class="account-form hidden">
+<form id="resetForm" class="account-form hidden" novalidate>
 <p class="account-note">Podaj e-mail, a wyślemy Ci link do ustawienia nowego hasła.</p>
 <label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl"></label>
 <button class="btn btn-dark" type="submit">Wyślij link <span>→</span></button>
