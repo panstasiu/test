@@ -1,1 +1,194 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AURELIA — nowoczesne meble do świadomych wnętrz.">
+  <title>AURELIA — Meble, które zostają na lata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="announcement">Darmowa dostawa od 2500 zł <span>•</span> 30 dni na zwrot</div>
 
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Aurelia strona główna">
+      <span class="brand-mark">A</span>
+      <span>AURELIA</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Główna nawigacja">
+      <a href="#kolekcja">Kolekcja</a>
+      <a href="#bestsellery">Bestsellery</a>
+      <a href="#studio">Studio</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" data-open-search aria-label="Szukaj">⌕</button>
+      <button class="cart-btn" data-open-cart>Torba <span id="cartCount">0</span></button>
+      <button class="menu-btn" data-menu aria-label="Otwórz menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#kolekcja">Kolekcja</a>
+    <a href="#bestsellery">Bestsellery</a>
+    <a href="#studio">Studio</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Kolekcja jesień / zima 2026</p>
+        <h1>Przestrzeń,<br><em>która oddycha.</em></h1>
+        <p class="hero-text">Spokojne formy, naturalne materiały i detale, które robią różnicę. Meble zaprojektowane do życia — nie tylko do oglądania.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#bestsellery">Odkryj kolekcję <span>↗</span></a>
+          <a class="text-link" href="#studio">Poznaj nasze podejście</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1500&q=85" alt="Jasna sofa w nowoczesnym salonie">
+        </div>
+        <div class="hero-note"><span>01</span><p>Soft shapes<br>natural living</p></div>
+        <div class="hero-orb" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div><strong>01</strong><span>Projektujemy lokalnie</span></div>
+      <div><strong>02</strong><span>Materiały z odpowiedzialnych źródeł</span></div>
+      <div><strong>03</strong><span>Serwis door-to-door</span></div>
+      <div><strong>04</strong><span>5 lat gwarancji</span></div>
+    </section>
+
+    <section class="section" id="kolekcja">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">Kategorie</p><h2>Zaprojektuj swój rytm.</h2></div>
+        <p>Od miękkich sof po stoły, przy których chce się zostać dłużej. Wybierz przestrzeń, od której zaczniesz.</p>
+      </div>
+      <div class="category-grid">
+        <a class="category-card tall reveal" href="#bestsellery">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85" alt="Salon">
+          <div><span>01</span><h3>Salon</h3><small>Zobacz kolekcję →</small></div>
+        </a>
+        <a class="category-card reveal" href="#bestsellery">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=85" alt="Jadalnia">
+          <div><span>02</span><h3>Jadalnia</h3><small>Zobacz kolekcję →</small></div>
+        </a>
+        <a class="category-card reveal" href="#bestsellery">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85" alt="Sypialnia">
+          <div><span>03</span><h3>Sypialnia</h3><small>Zobacz kolekcję →</small></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section products-section" id="bestsellery">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">Bestsellery</p><h2>Rzeczy, do których się wraca.</h2></div>
+        <button class="filter-toggle" data-filter-toggle>Filtruj <span>+</span></button>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">Wszystkie</button>
+        <button class="filter" data-filter="sofa">Sofy</button>
+        <button class="filter" data-filter="stol">Stoły</button>
+        <button class="filter" data-filter="krzeslo">Krzesła</button>
+        <button class="filter" data-filter="oswietlenie">Oświetlenie</button>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <article class="product-card reveal" data-category="sofa" data-id="sofa-luna" data-name="Luna Soft" data-price="4290">
+          <div class="product-media"><span class="tag">Bestseller</span><button class="heart" aria-label="Dodaj do ulubionych">♡</button><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85" alt="Sofa Luna Soft"></div>
+          <div class="product-info"><div><p class="product-type">Sofa / 3-osobowa</p><h3>Luna Soft</h3></div><strong>4 290 zł</strong></div>
+          <button class="add-product">Dodaj do torby</button>
+        </article>
+
+        <article class="product-card reveal" data-category="stol" data-id="stol-ena" data-name="Ena Oak" data-price="2490">
+          <div class="product-media"><button class="heart" aria-label="Dodaj do ulubionych">♡</button><img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=900&q=85" alt="Drewniany stół Ena Oak"></div>
+          <div class="product-info"><div><p class="product-type">Stół / dąb</p><h3>Ena Oak</h3></div><strong>2 490 zł</strong></div>
+          <button class="add-product">Dodaj do torby</button>
+        </article>
+
+        <article class="product-card reveal" data-category="krzeslo" data-id="krzeslo-mia" data-name="Mia Chair" data-price="590">
+          <div class="product-media"><span class="tag muted">Nowość</span><button class="heart" aria-label="Dodaj do ulubionych">♡</button><img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=85" alt="Krzesło Mia"></div>
+          <div class="product-info"><div><p class="product-type">Krzesło / tkanina</p><h3>Mia Chair</h3></div><strong>590 zł</strong></div>
+          <button class="add-product">Dodaj do torby</button>
+        </article>
+
+        <article class="product-card reveal" data-category="oswietlenie" data-id="lampa-nova" data-name="Nova Light" data-price="790">
+          <div class="product-media"><button class="heart" aria-label="Dodaj do ulubionych">♡</button><img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=85" alt="Lampa Nova"></div>
+          <div class="product-info"><div><p class="product-type">Lampa / szkło</p><h3>Nova Light</h3></div><strong>790 zł</strong></div>
+          <button class="add-product">Dodaj do torby</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="feature-section">
+      <div class="feature-copy reveal">
+        <p class="eyebrow">Poznaj produkt</p>
+        <h2>Dotknij, obróć,<br><em>zobacz z bliska.</em></h2>
+        <p>Nie zawsze da się poczuć mebel przez ekran. Dlatego stworzyliśmy prosty podgląd 3D — przeciągnij po modelu i obejrzyj go z każdej strony.</p>
+        <div class="feature-specs"><span>360° obrót</span><span>Interaktywny podgląd</span><span>Model webowy</span></div>
+      </div>
+      <div class="viewer-wrap reveal">
+        <div class="viewer" id="viewer" aria-label="Interaktywny podgląd fotela">
+          <div class="viewer-grid"></div>
+          <div class="chair-3d">
+            <div class="chair-back"></div><div class="chair-seat"></div><div class="chair-arm left"></div><div class="chair-arm right"></div><div class="chair-leg l1"></div><div class="chair-leg l2"></div><div class="chair-leg l3"></div><div class="chair-leg l4"></div>
+          </div>
+          <div class="viewer-label">AURELIA / FORM 01</div>
+          <div class="drag-hint">↔ przeciągnij, aby obrócić</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section" id="studio">
+      <div class="quote-mark">“</div>
+      <blockquote>Nie chcemy wypełniać mieszkań. Chcemy tworzyć miejsca, w których dobrze się żyje.</blockquote>
+      <p>— Marta Lewicka, założycielka AURELIA</p>
+    </section>
+
+    <section class="studio-section section">
+      <div class="studio-image reveal"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85" alt="Wnętrze pracowni Aurelia"></div>
+      <div class="studio-copy reveal"><p class="eyebrow">Nasze studio</p><h2>Mniej rzeczy.<br>Więcej charakteru.</h2><p>W AURELIA wierzymy w projektowanie bez pośpiechu. Wybieramy materiały, które pięknieją z czasem, i formy, które nie potrzebują sezonowych trendów.</p><a class="btn btn-dark" href="#kontakt">Poznaj nas bliżej <span>↗</span></a></div>
+    </section>
+
+    <section class="newsletter section" id="kontakt">
+      <div><p class="eyebrow">Zostań w kontakcie</p><h2>Inspiracje raz w miesiącu.<br>Zero spamu.</h2></div>
+      <form id="newsletterForm"><input type="email" placeholder="Twój adres e-mail" required><button class="btn btn-dark" type="submit">Zapisz mnie →</button></form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <a class="brand" href="#top"><span class="brand-mark">A</span><span>AURELIA</span></a>
+      <p>Spokojne wnętrza. Dobre materiały.<br>Projektowane lokalnie.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#kolekcja">Kolekcja</a><a href="#bestsellery">Bestsellery</a><a href="#studio">Studio</a><a href="#kontakt">Kontakt</a>
+      <span>© 2026 AURELIA</span>
+    </div>
+  </footer>
+
+  <div class="search-overlay" id="searchOverlay">
+    <button class="close-overlay" data-close-search>×</button>
+    <div><p class="eyebrow">Szukaj</p><input id="searchInput" type="search" placeholder="Np. sofa, dąb, lampa..."><p id="searchResult"></p></div>
+  </div>
+
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-head"><h2>Twoja torba</h2><button data-close-cart>×</button></div>
+    <div id="cartItems" class="cart-items"><p class="empty-cart">Twoja torba jest jeszcze pusta.</p></div>
+    <div class="cart-bottom"><div><span>Suma</span><strong id="cartTotal">0 zł</strong></div><button class="btn btn-dark checkout">Przejdź do zamówienia</button></div>
+  </aside>
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
