@@ -8,29 +8,9 @@ alter table public.order_items enable row level security;
 
 drop policy if exists "public can insert orders" on public.orders;
 drop policy if exists "public can insert order items" on public.order_items;
-drop policy if exists "public cannot read orders" on public.orders;
-drop policy if exists "public cannot read order items" on public.order_items;
 
-create policy "public can insert orders"
-on public.orders
-for insert
-to anon, authenticated
-with check (
-  status = 'pending'
-  and payment_status = 'pending'
-  and fulfillment_status = 'unfulfilled'
-  and total >= 0
-);
-
-create policy "public can insert order items"
-on public.order_items
-for insert
-to anon, authenticated
-with check (
-  quantity > 0
-  and unit_price >= 0
-  and total_price >= 0
-);
+-- Orders are created only through the transactional RPC below.
+-- There is intentionally no public SELECT policy for orders/order_items.
 
 -- Atomic order creation: one RPC creates the order and all order items.
 -- It intentionally does not expose a SELECT policy for customers.
