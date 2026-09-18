@@ -12,7 +12,7 @@ const $=(s,p=document)=>p.querySelector(s); const $$=(s,p=document)=>[...p.query
 const money=n=>new Intl.NumberFormat("pl-PL").format(n)+" zł";
 const toast=m=>{const t=$("#toast");if(!t)return;t.textContent=m;t.classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),1800)};
 const save=()=>{localStorage.setItem("aurelia-cart",JSON.stringify(state.cart));localStorage.setItem("aurelia-favorites",JSON.stringify(state.favorites));renderCart();updateCartCount()};
-const updateCartCount=()=>{const c=$("#cartCount");if(c)c.textContent=state.cart.length};
+const updateCartCount=()=>{const c=$("#cartCount");if(c)c.textContent=state.cart.reduce((sum,p)=>sum+(p.qty||1),0)};
 function renderCart(){const items=$("#cartItems"),total=$("#cartTotal");if(!items)return;const sum=state.cart.reduce((a,p)=>a+p.price*(p.qty||1),0);if(total)total.textContent=money(sum);if(!state.cart.length){items.innerHTML='<p class="empty-cart">Twoja torba jest jeszcze pusta.</p>';return}
 items.innerHTML=state.cart.map((p,i)=>'<div class="cart-row"><img class="cart-thumb" src="'+p.img+'" alt=""><div><h4>'+p.name+'</h4><p>'+money(p.price)+' × '+(p.qty||1)+'</p><div class="cart-qty"><button data-qty="'+i+'" data-dir="-1">−</button><span>'+(p.qty||1)+'</span><button data-qty="'+i+'" data-dir="1">+</button></div></div><button class="remove-item" data-remove="'+i+'">×</button></div>').join("");
 $("[data-remove]",items).forEach(b=>b.onclick=()=>{state.cart.splice(+b.dataset.remove,1);save();toast("Usunięto produkt")});$("[data-qty]",items).forEach(b=>b.onclick=()=>{const p=state.cart[+b.dataset.qty];if(!p)return;p.qty=Math.max(1,(p.qty||1)+(+b.dataset.dir));save()})}
