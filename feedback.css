@@ -1,0 +1,9 @@
+.form-feedback{display:none;margin-top:10px;padding:11px 13px;border:1px solid var(--line);font-size:11px;line-height:1.55;background:var(--surface-2);color:var(--muted)}
+.form-feedback.show{display:block}
+.form-feedback.error{border-color:#b96d6d;color:#a64f4f;background:rgba(185,109,109,.07)}
+.form-feedback.success{border-color:#82966a;color:#63794d;background:rgba(130,150,106,.08)}
+.field-invalid{border-color:#b96d6d!important;box-shadow:0 0 0 3px rgba(185,109,109,.08)}
+.consent-invalid{color:#a64f4f!important}
+.account-message{transition:opacity .2s ease,transform .2s ease}
+.account-message.error{font-weight:600}
+.account-message.success{font-weight:600}
