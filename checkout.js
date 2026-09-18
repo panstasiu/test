@@ -42,5 +42,5 @@ if(window.AURELIA_SUPABASE?.url && window.AURELIA_SUPABASE?.publishableKey && wi
 }
 localStorage.setItem("aurelia-last-order",JSON.stringify({orderId:"AUR-"+order.order_number,customer:data,items:cart,createdAt:order.created_at}));
 localStorage.removeItem("aurelia-cart");
-form.innerHTML='<div class="checkout-success"><p class="eyebrow">ZAMÓWIENIE PRZYGOTOWANE</p><h2>Dziękujemy, '+data.firstName+'.</h2><p>Numer zamówienia: <strong>'+order.orderId+'</strong></p><p>To jeszcze nie jest pobranie płatności. W następnym etapie podepniemy prawdziwy checkout i zapis zamówienia do bazy.</p><a class="btn btn-dark" href="index.html">Wróć do AURELII →</a></div>';items.innerHTML="";});
+form.innerHTML='<div class="checkout-success"><p class="eyebrow">ZAMÓWIENIE PRZYGOTOWANE</p><h2>Dziękujemy, '+data.firstName+'.</h2><p>Numer zamówienia: <strong>'+AUR-order.order_number+'</strong></p><p>Zamówienie zostało zapisane w bazie AURELIA. Płatność online zostanie podłączona w kolejnym etapie.</p><a class="btn btn-dark" href="index.html">Wróć do AURELII →</a></div>';items.innerHTML="";});
 })();
