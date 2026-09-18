@@ -540,3 +540,8 @@ body.no-scroll{overflow:hidden!important}
 .cart-drawer.open{visibility:visible;pointer-events:auto}
 .drawer-backdrop{pointer-events:none}
 .drawer-backdrop.open{pointer-events:auto}
+
+/* Cart drawer fallback: opens via #cartDrawer even if JS fails */
+.cart-drawer:target{transform:translateX(0);visibility:visible;pointer-events:auto}
+.drawer-head a[data-close-cart]{border:0;background:none;color:var(--text);font-size:28px;text-decoration:none;line-height:1}
+.cart-btn{text-decoration:none;display:inline-flex;align-items:center}
