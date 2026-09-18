@@ -1,4 +1,13 @@
-const state={cart:JSON.parse(localStorage.getItem("aurelia-cart")||"[]"),favorites:JSON.parse(localStorage.getItem("aurelia-favorites")||"[]")};
+function readStorage(key){
+  try{
+    const value=JSON.parse(localStorage.getItem(key)||"[]");
+    return Array.isArray(value)?value:[];
+  }catch(e){
+    localStorage.removeItem(key);
+    return [];
+  }
+}
+const state={cart:readStorage("aurelia-cart"),favorites:readStorage("aurelia-favorites")};
 const $=(s,p=document)=>p.querySelector(s); const $$=(s,p=document)=>[...p.querySelectorAll(s)];
 const money=n=>new Intl.NumberFormat("pl-PL").format(n)+" zł";
 const toast=m=>{const t=$("#toast");if(!t)return;t.textContent=m;t.classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),1800)};
