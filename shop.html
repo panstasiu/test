@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="pl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AURELIA — Sklep</title><link rel="stylesheet" href="style.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AURELIA — Sklep</title><link rel="stylesheet" href="style.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">  <script>(function(){document.documentElement.dataset.theme=localStorage.getItem("aurelia-theme")||"light"})();</script>
+</head>
 <body>
 <div class="announcement">Darmowa dostawa od 2500 zł <span>•</span> 30 dni na zwrot</div>
 <header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">A</span><span>AURELIA</span></a><nav class="desktop-nav"><a href="index.html">Start</a><a href="shop.html">Sklep</a><a href="about.html">Studio</a><a href="contact.html">Kontakt</a></nav><div class="header-actions"><button class="icon-btn" data-open-search>⌕</button><button class="cart-btn" data-open-cart>Torba <span id="cartCount">0</span></button><button class="menu-btn" data-menu><span></span><span></span></button></div></header>
@@ -15,11 +16,11 @@
 </main>
 <div class="search-overlay" id="searchOverlay"><button class="close-overlay" data-close-search>×</button><div><p class="eyebrow">Szukaj</p><input id="searchInput" type="search" placeholder="Np. sofa, dąb, lampa..."><p id="searchResult"></p></div></div>
 <aside class="cart-drawer" id="cartDrawer"><div class="drawer-head"><h2>Twoja torba</h2><button data-close-cart>×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-bottom"><div><span>Suma</span><strong id="cartTotal">0 zł</strong></div><button class="btn btn-dark checkout">Przejdź do zamówienia</button></div></aside><div class="drawer-backdrop" id="backdrop"></div><div class="toast" id="toast"></div>
-<button class="theme-tab" id="themeTab" aria-label="Otwórz ustawienia wyglądu"><span>☼</span></button>
-  <div class="theme-panel" id="themePanel" aria-hidden="true">
-    <div class="theme-panel-head"><div><p class="eyebrow">Wygląd</p><strong>Tryb strony</strong></div><button id="themeClose" aria-label="Zamknij">×</button></div>
-    <button class="theme-option" data-theme="dark"><span>☾</span><div><strong>Ciemny</strong><small>Elegancki i spokojny</small></div><i>✓</i></button>
-    <button class="theme-option active" data-theme="light"><span>☼</span><div><strong>Jasny</strong><small>Naturalny i lekki</small></div><i>✓</i></button>
-  </div>
-  <div class="theme-backdrop" id="themeBackdrop"></div>
+  <button class="appearance-toggle" id="appearanceToggle" type="button" aria-label="Otwórz ustawienia wyglądu"><span>☼</span></button>
+  <aside class="appearance-drawer" id="appearanceDrawer" aria-hidden="true">
+    <div class="appearance-head"><div><p class="eyebrow">Wygląd</p><strong>Tryb strony</strong></div><button id="appearanceClose" type="button" aria-label="Zamknij">×</button></div>
+    <button class="appearance-option" type="button" data-appearance="light"><span>☼</span><div><strong>Jasny</strong><small>Naturalny i lekki</small></div><i>✓</i></button>
+    <button class="appearance-option" type="button" data-appearance="dark"><span>☾</span><div><strong>Ciemny</strong><small>Elegancki i spokojny</small></div><i>✓</i></button>
+  </aside>
+  <div class="appearance-backdrop" id="appearanceBackdrop"></div>
   <script src="app.js"></script></body></html>
