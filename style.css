@@ -84,3 +84,158 @@ html[data-theme="light"] footer{background:#171614}
 html[data-theme="light"] .hero-image img,html[data-theme="light"] .category-card img,html[data-theme="light"] .product-media img,html[data-theme="light"] .studio-image img{filter:saturate(.8)}
 html[data-theme="light"] .btn-dark{background:#181714;color:#f3f1ec}
 @media(max-width:560px){.appearance-toggle{top:auto;bottom:110px}.appearance-drawer{width:min(350px,92vw)}}
+
+/* AURELIA dark mode refinement */
+html[data-theme="dark"]{
+  --bg:#0d0d0c;
+  --surface:#131311;
+  --surface-2:#191917;
+  --text:#f2eee6;
+  --muted:#9a958c;
+  --line:#302f2a;
+  --accent:#c4a982;
+}
+html[data-theme="dark"] body{
+  background:var(--bg);
+  color:var(--text);
+}
+html[data-theme="dark"] .announcement{
+  background:#0a0a09;
+  color:#aaa49a;
+  border-bottom:1px solid #24231f;
+}
+html[data-theme="dark"] .site-header{
+  background:rgba(13,13,12,.88);
+  border-bottom-color:rgba(255,255,255,.07);
+}
+html[data-theme="dark"] .brand-mark{
+  border-color:#5d584f;
+}
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .page-hero{
+  background:
+    radial-gradient(circle at 78% 18%,rgba(196,169,130,.09),transparent 28%),
+    var(--bg);
+}
+html[data-theme="dark"] .trust-strip{
+  background:#11110f;
+  border-color:#292823;
+}
+html[data-theme="dark"] .trust-strip div{
+  border-color:#292823;
+}
+html[data-theme="dark"] .category-card,
+html[data-theme="dark"] .product-card,
+html[data-theme="dark"] .viewer,
+html[data-theme="dark"] .studio-image,
+html[data-theme="dark"] .promo-box,
+html[data-theme="dark"] .values-grid>div,
+html[data-theme="dark"] .contact-grid{
+  background:var(--surface);
+}
+html[data-theme="dark"] .product-card{
+  border:1px solid rgba(255,255,255,.055);
+}
+html[data-theme="dark"] .product-card:hover{
+  border-color:rgba(196,169,130,.35);
+  box-shadow:0 20px 60px rgba(0,0,0,.28);
+}
+html[data-theme="dark"] .product-media{
+  background:#181815;
+}
+html[data-theme="dark"] .filters{
+  background:#121210;
+  border-color:#2c2b27;
+}
+html[data-theme="dark"] .filter{
+  color:#9f9a91;
+}
+html[data-theme="dark"] .filter.active{
+  background:#e8e0d3;
+  color:#151411;
+}
+html[data-theme="dark"] .btn-dark{
+  background:#eee7dc;
+  color:#11110f;
+  border-color:#eee7dc;
+}
+html[data-theme="dark"] .btn-dark:hover{
+  background:#c4a982;
+  border-color:#c4a982;
+  color:#11110f;
+}
+html[data-theme="dark"] .text-link{
+  color:#d0c8bc;
+}
+html[data-theme="dark"] .text-link:after{
+  background:#c4a982;
+}
+html[data-theme="dark"] .feature-section,
+html[data-theme="dark"] .quote-section,
+html[data-theme="dark"] .newsletter{
+  background:#10100f;
+}
+html[data-theme="dark"] .quote-section{
+  border-top:1px solid #292823;
+  border-bottom:1px solid #292823;
+}
+html[data-theme="dark"] .viewer-grid{
+  opacity:.22;
+}
+html[data-theme="dark"] .appearance-toggle{
+  background:#1b1b18;
+  border-color:#3b3933;
+  color:#eee7dc;
+  box-shadow:-8px 8px 35px rgba(0,0,0,.55);
+}
+html[data-theme="dark"] .appearance-drawer{
+  background:#181816;
+  border-left-color:#37352f;
+  box-shadow:-25px 0 80px rgba(0,0,0,.65);
+}
+html[data-theme="dark"] .appearance-option{
+  background:#121210;
+  border-color:#34322d;
+}
+html[data-theme="dark"] .appearance-option:hover{
+  border-color:#81745f;
+  background:#1c1b18;
+}
+html[data-theme="dark"] .appearance-option.active{
+  background:rgba(196,169,130,.11);
+  border-color:#c4a982;
+}
+html[data-theme="dark"] .search-overlay{
+  background:rgba(8,8,7,.97);
+}
+html[data-theme="dark"] .cart-drawer{
+  background:#181816;
+  border-left:1px solid #34322d;
+}
+html[data-theme="dark"] .drawer-backdrop{
+  background:rgba(0,0,0,.72);
+}
+html[data-theme="dark"] .mobile-menu{
+  background:#171715;
+  border-bottom-color:#34322d;
+}
+html[data-theme="dark"] footer{
+  background:#080807;
+  color:#eee9df;
+  border-top:1px solid #24231f;
+}
+html[data-theme="dark"] .footer-links{
+  border-color:#292823;
+}
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea{
+  color:var(--text);
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder{
+  color:#706c64;
+}
+html[data-theme="dark"] .hero-orb{
+  opacity:.55;
+}
