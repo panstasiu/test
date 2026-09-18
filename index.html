@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script>(function(){document.documentElement.dataset.theme=localStorage.getItem("aurelia-theme")||"light"})();</script>
+  <script>(function(){try{document.documentElement.dataset.theme=localStorage.getItem("aurelia-theme")||"light"}catch(e){document.documentElement.dataset.theme="light"}})();</script>
 </head>
 <body>
   <div class="announcement">Darmowa dostawa od 2500 zł <span>•</span> 30 dni na zwrot</div>
@@ -196,6 +196,7 @@
     <button class="appearance-option" type="button" data-appearance="dark"><span>☾</span><div><strong>Ciemny</strong><small>Elegancki i spokojny</small></div><i>✓</i></button>
   </aside>
   <div class="appearance-backdrop" id="appearanceBackdrop"></div>
+  <script src="appearance.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
