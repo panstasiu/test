@@ -39,32 +39,3 @@ $(".checkout")?.addEventListener("click",()=>toast(state.cart.length?"Demo sklep
 
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeSearch();closeCart();menu?.classList.remove("open")}if(e.key==="/"&&document.activeElement?.tagName!=="INPUT"){e.preventDefault();openSearch()}});
 const progress=document.createElement("div");progress.className="scroll-progress";document.body.appendChild(progress);window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h>0?(scrollY/h)*100:0)+"%"},{passive:true});
-
-
-/* AURELIA appearance switcher — isolated from the rest of the app */
-(function(){
-  function initAppearance(){
-    const root=document.documentElement;
-    const toggle=document.getElementById("appearanceToggle");
-    const drawer=document.getElementById("appearanceDrawer");
-    const close=document.getElementById("appearanceClose");
-    const backdrop=document.getElementById("appearanceBackdrop");
-    const options=[...document.querySelectorAll(".appearance-option")];
-    if(!toggle||!drawer||!close||!backdrop)return;
-    function apply(theme){
-      theme=theme==="dark"?"dark":"light";
-      root.dataset.theme=theme;
-      localStorage.setItem("aurelia-theme",theme);
-      options.forEach(o=>o.classList.toggle("active",o.dataset.appearance===theme));
-    }
-    function open(){drawer.classList.add("open");backdrop.classList.add("open");drawer.setAttribute("aria-hidden","false")}
-    function shut(){drawer.classList.remove("open");backdrop.classList.remove("open");drawer.setAttribute("aria-hidden","true")}
-    apply(localStorage.getItem("aurelia-theme")||"light");
-    toggle.addEventListener("click",open);
-    close.addEventListener("click",shut);
-    backdrop.addEventListener("click",shut);
-    options.forEach(o=>o.addEventListener("click",function(){apply(o.dataset.appearance);shut()}));
-    document.addEventListener("keydown",e=>{if(e.key==="Escape")shut()});
-  }
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initAppearance);else initAppearance();
-})();
