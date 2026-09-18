@@ -13,10 +13,10 @@ const money=n=>new Intl.NumberFormat("pl-PL").format(n)+" zł";
 const toast=m=>{const t=$("#toast");if(!t)return;t.textContent=m;t.classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),1800)};
 const save=()=>{localStorage.setItem("aurelia-cart",JSON.stringify(state.cart));localStorage.setItem("aurelia-favorites",JSON.stringify(state.favorites));renderCart();updateCartCount()};
 const updateCartCount=()=>{const c=$("#cartCount");if(c)c.textContent=state.cart.length};
-function renderCart(){const items=$("#cartItems"),total=$("#cartTotal");if(!items)return;const sum=state.cart.reduce((a,p)=>a+p.price,0);if(total)total.textContent=money(sum);if(!state.cart.length){items.innerHTML='<p class="empty-cart">Twoja torba jest jeszcze pusta.</p>';return}
-items.innerHTML=state.cart.map((p,i)=>'<div class="cart-row"><img class="cart-thumb" src="'+p.img+'" alt=""><div><h4>'+p.name+'</h4><p>'+money(p.price)+'</p></div><button class="remove-item" data-remove="'+i+'">×</button></div>').join("");
-$$("[data-remove]",items).forEach(b=>b.onclick=()=>{state.cart.splice(+b.dataset.remove,1);save();toast("Usunięto produkt")})}
-$$(".add-product").forEach(btn=>btn.onclick=()=>{const card=btn.closest(".product-card");if(!card)return;state.cart.push({name:card.dataset.name,price:+card.dataset.price,img:$("img",card)?.src||""});save();toast("Dodano do torby ✓");btn.textContent="Dodano ✓";setTimeout(()=>btn.textContent="Dodaj do torby",1000)});
+function renderCart(){const items=$("#cartItems"),total=$("#cartTotal");if(!items)return;const sum=state.cart.reduce((a,p)=>a+p.price*(p.qty||1),0);if(total)total.textContent=money(sum);if(!state.cart.length){items.innerHTML='<p class="empty-cart">Twoja torba jest jeszcze pusta.</p>';return}
+items.innerHTML=state.cart.map((p,i)=>'<div class="cart-row"><img class="cart-thumb" src="'+p.img+'" alt=""><div><h4>'+p.name+'</h4><p>'+money(p.price)+' × '+(p.qty||1)+'</p><div class="cart-qty"><button data-qty="'+i+'" data-dir="-1">−</button><span>'+(p.qty||1)+'</span><button data-qty="'+i+'" data-dir="1">+</button></div></div><button class="remove-item" data-remove="'+i+'">×</button></div>').join("");
+$("[data-remove]",items).forEach(b=>b.onclick=()=>{state.cart.splice(+b.dataset.remove,1);save();toast("Usunięto produkt")});$("[data-qty]",items).forEach(b=>b.onclick=()=>{const p=state.cart[+b.dataset.qty];if(!p)return;p.qty=Math.max(1,(p.qty||1)+(+b.dataset.dir));save()})}
+$$(".add-product").forEach(btn=>btn.onclick=()=>{const card=btn.closest(".product-card");if(!card)return;const id=card.dataset.id;const existing=state.cart.find(p=>p.id===id);if(existing){existing.qty=(existing.qty||1)+1}else{state.cart.push({id,name:card.dataset.name,price:+card.dataset.price,img:$("img",card)?.src||"",qty:1})}save();toast("Dodano do torby ✓");btn.textContent="Dodano ✓";setTimeout(()=>btn.textContent="Dodaj do torby",1000)});
 renderCart();updateCartCount();
 
 const drawer=$("#cartDrawer"),backdrop=$("#backdrop");
@@ -44,7 +44,7 @@ if(viewer&&model){const move=x=>{if(!dragging)return;rotation+=(x-lastX)*.45;las
 
 const newsletter=$("#newsletterForm");newsletter?.addEventListener("submit",e=>{e.preventDefault();e.target.innerHTML='<p class="newsletter-message">Gotowe — sprawdź swoją skrzynkę. ✦</p>';toast("Dziękujemy za zapis!")});
 const contact=$("#contactForm");contact?.addEventListener("submit",e=>{e.preventDefault();const name=new FormData(contact).get("name");contact.innerHTML='<div class="form-success"><strong>Dziękujemy, '+name+'!</strong><p>Wiadomość została przygotowana. To wersja demonstracyjna strony.</p></div>';toast("Wiadomość wysłana ✓")});
-$(".checkout")?.addEventListener("click",()=>toast(state.cart.length?"Demo sklepu — tutaj możemy podłączyć płatności.":"Najpierw dodaj coś do torby."));
+$(".checkout")?.addEventListener("click",()=>{if(state.cart.length)location.href="checkout.html";else toast("Najpierw dodaj coś do torby.")});
 
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeSearch();closeCart();menu?.classList.remove("open")}if(e.key==="/"&&document.activeElement?.tagName!=="INPUT"){e.preventDefault();openSearch()}});
 const progress=document.createElement("div");progress.className="scroll-progress";document.body.appendChild(progress);window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h>0?(scrollY/h)*100:0)+"%"},{passive:true});
