@@ -20,28 +20,8 @@ function addProduct(btn){const card=btn.closest(".product-card");if(!card)return
 document.addEventListener("click",e=>{const btn=e.target.closest(".add-product");if(btn){e.preventDefault();addProduct(btn)}});
 renderCart();updateCartCount();
 
-const drawer=$("#cartDrawer"),backdrop=$("#backdrop");
-function openCart(){
-  const d=$("#cartDrawer"), b=$("#backdrop");
-  if(!d)return;
-  d.classList.add("open");
-  b?.classList.add("open");
-  document.body.classList.add("no-scroll");
-}
-function closeCart(){
-  const d=$("#cartDrawer"), b=$("#backdrop");
-  d?.classList.remove("open");
-  b?.classList.remove("open");
-  document.body.classList.remove("no-scroll");
-}
-// Robust delegated handlers: the Torba button keeps working even if header markup is rebuilt.
-document.addEventListener("click",e=>{
-  const open=e.target.closest("[data-open-cart]");
-  if(open){e.preventDefault();openCart();return}
-  const close=e.target.closest("[data-close-cart]");
-  if(close){e.preventDefault();closeCart();return}
-  if(e.target===backdrop)closeCart();
-});
+const openCart=()=>window.AURELIA_CART?.open();
+const closeCart=()=>window.AURELIA_CART?.close();
 
 const search=$("#searchOverlay"),input=$("#searchInput"),result=$("#searchResult");
 function openSearch(){if(!search)return;search.classList.add("open");input?.focus();document.body.classList.add("no-scroll")}
