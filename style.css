@@ -381,3 +381,57 @@ html[data-theme] .contact-grid,
 html[data-theme] footer{
   transition:background-color .8s ease,color .8s ease,border-color .8s ease,box-shadow .8s ease;
 }
+
+
+/* FINAL DAY/NIGHT VISUAL OVERRIDE */
+html[data-theme="dark"] .hero-image img,
+html[data-theme="dark"] .category-card img,
+html[data-theme="dark"] .product-media img,
+html[data-theme="dark"] .studio-image img{
+  filter:brightness(.42) saturate(.55) contrast(1.15) !important;
+}
+html[data-theme="dark"] .hero-image::after,
+html[data-theme="dark"] .category-card::before,
+html[data-theme="dark"] .product-media::after,
+html[data-theme="dark"] .studio-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  background:
+    linear-gradient(180deg,rgba(20,31,55,.12),rgba(3,5,10,.62)),
+    radial-gradient(circle at 70% 15%,rgba(112,145,195,.18),transparent 35%);
+}
+html[data-theme="dark"] .hero-image,
+html[data-theme="dark"] .studio-image{
+  position:relative;
+}
+html[data-theme="dark"] .category-card,
+html[data-theme="dark"] .product-media{
+  isolation:isolate;
+}
+html[data-theme="dark"] .category-card::after{
+  z-index:2;
+  background:linear-gradient(transparent 25%,rgba(0,0,0,.82));
+}
+html[data-theme="dark"] .category-card div,
+html[data-theme="dark"] .product-media .tag,
+html[data-theme="dark"] .product-media .heart{
+  z-index:3;
+}
+html[data-theme="dark"] .hero-note{
+  background:#171c25;
+  border:1px solid #303846;
+}
+html[data-theme="dark"] .hero-note span{
+  color:#c8a979;
+}
+html[data-theme="dark"] .viewer{
+  background:
+    radial-gradient(circle at 70% 20%,rgba(95,126,180,.18),transparent 35%),
+    #080b12;
+}
+html[data-theme="dark"] .announcement{
+  box-shadow:0 2px 30px rgba(80,110,170,.08);
+}
