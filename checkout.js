@@ -1,0 +1,10 @@
+(function(){
+"use strict";
+const money=n=>new Intl.NumberFormat("pl-PL").format(n)+" zł";
+const read=()=>{try{const v=JSON.parse(localStorage.getItem("aurelia-cart")||"[]");return Array.isArray(v)?v:[]}catch(e){return[]}};
+const cart=read(), items=document.getElementById("checkoutItems"), subtotalEl=document.getElementById("checkoutSubtotal"), shippingEl=document.getElementById("checkoutShipping"), totalEl=document.getElementById("checkoutTotal"), form=document.getElementById("checkoutForm"), toast=document.getElementById("toast");
+const notify=m=>{if(!toast)return;toast.textContent=m;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),2200)};
+function render(){const subtotal=cart.reduce((s,p)=>s+p.price*(p.qty||1),0), shipping=subtotal===0?0:(subtotal>=2500?0:49), total=subtotal+shipping;items.innerHTML=cart.length?cart.map(p=>'<div class="checkout-item"><img src="'+p.img+'" alt=""><div><strong>'+p.name+'</strong><span>'+(p.qty||1)+' × '+money(p.price)+'</span></div><b>'+money(p.price*(p.qty||1))+'</b></div>').join(""):'<p class="checkout-empty">Twoja torba jest pusta.</p>';subtotalEl.textContent=money(subtotal);shippingEl.textContent=shipping?money(shipping):"Gratis";totalEl.textContent=money(total);}
+render();
+form?.addEventListener("submit",e=>{e.preventDefault();if(!cart.length){notify("Dodaj produkt do torby.");return}const data=Object.fromEntries(new FormData(form));const order={orderId:"AUR-"+Date.now(),customer:data,items:cart,createdAt:new Date().toISOString()};localStorage.setItem("aurelia-last-order",JSON.stringify(order));localStorage.removeItem("aurelia-cart");form.innerHTML='<div class="checkout-success"><p class="eyebrow">ZAMÓWIENIE PRZYGOTOWANE</p><h2>Dziękujemy, '+data.firstName+'.</h2><p>Numer zamówienia: <strong>'+order.orderId+'</strong></p><p>To jeszcze nie jest pobranie płatności. W następnym etapie podepniemy prawdziwy checkout i zapis zamówienia do bazy.</p><a class="btn btn-dark" href="index.html">Wróć do AURELII →</a></div>';items.innerHTML="";});
+})();
