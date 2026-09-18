@@ -189,6 +189,12 @@
   <div class="drawer-backdrop" id="backdrop"></div>
   <div class="toast" id="toast"></div>
 
-  <script src="app.js"></script>
+  <button class="theme-tab" id="themeTab" aria-label="Otwórz ustawienia wyglądu"><span>☼</span></button>
+<div class="theme-panel" id="themePanel" aria-hidden="true">
+  <div class="theme-panel-head"><div><p class="eyebrow">Wygląd</p><strong>Tryb strony</strong></div><button id="themeClose" aria-label="Zamknij">×</button></div>
+  <button class="theme-option active" data-theme="dark"><span>☾</span><div><strong>Ciemny</strong><small>Elegancki i spokojny</small></div><i>✓</i></button>
+  <button class="theme-option" data-theme="light"><span>☼</span><div><strong>Jasny</strong><small>Naturalny i lekki</small></div><i>✓</i></button>
+</div>
+<div class="theme-backdrop" id="themeBackdrop"></div>\n  <script src="app.js"></script>
 </body>
 </html>
