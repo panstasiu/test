@@ -239,3 +239,145 @@ html[data-theme="dark"] textarea::placeholder{
 html[data-theme="dark"] .hero-orb{
   opacity:.55;
 }
+
+
+/* AURELIA day → night transformation */
+html[data-theme="light"] body{
+  transition:background-color .8s ease,color .8s ease;
+}
+html[data-theme="dark"] body{
+  background:
+    radial-gradient(circle at 15% 8%,rgba(91,111,148,.08),transparent 25%),
+    radial-gradient(circle at 85% 20%,rgba(196,169,130,.06),transparent 22%),
+    var(--bg);
+}
+
+/* Night atmosphere across photography */
+html[data-theme="dark"] .hero-image,
+html[data-theme="dark"] .category-card,
+html[data-theme="dark"] .product-media,
+html[data-theme="dark"] .studio-image{
+  background:#090b10;
+}
+html[data-theme="dark"] .hero-image img,
+html[data-theme="dark"] .category-card img,
+html[data-theme="dark"] .product-media img,
+html[data-theme="dark"] .studio-image img{
+  filter:
+    brightness(.56)
+    saturate(.68)
+    contrast(1.08)
+    sepia(.08)
+    hue-rotate(8deg);
+  transition:filter .9s ease,transform .8s ease;
+}
+html[data-theme="dark"] .hero-image:after,
+html[data-theme="dark"] .category-card:before,
+html[data-theme="dark"] .product-media:after,
+html[data-theme="dark"] .studio-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 70% 18%,rgba(135,157,196,.16),transparent 24%),
+    linear-gradient(180deg,rgba(9,13,22,.08),rgba(4,5,8,.56));
+  z-index:1;
+}
+html[data-theme="dark"] .hero-image,
+html[data-theme="dark"] .category-card,
+html[data-theme="dark"] .product-media,
+html[data-theme="dark"] .studio-image{
+  isolation:isolate;
+}
+html[data-theme="dark"] .category-card:after{
+  z-index:2;
+  background:linear-gradient(transparent 28%,rgba(3,4,7,.82));
+}
+html[data-theme="dark"] .category-card div,
+html[data-theme="dark"] .product-media .tag,
+html[data-theme="dark"] .product-media .heart{
+  z-index:3;
+}
+
+/* Day has warmth, night has cool ambient light */
+html[data-theme="light"] .hero-image,
+html[data-theme="light"] .category-card,
+html[data-theme="light"] .product-media,
+html[data-theme="light"] .studio-image{
+  box-shadow:0 18px 60px rgba(82,68,48,.08);
+}
+html[data-theme="dark"] .hero-image,
+html[data-theme="dark"] .category-card,
+html[data-theme="dark"] .product-media,
+html[data-theme="dark"] .studio-image{
+  box-shadow:0 24px 80px rgba(0,0,0,.38);
+}
+
+/* Night sky feeling */
+html[data-theme="dark"] .hero-orb{
+  background:
+    radial-gradient(circle at 35% 30%,#eee7dc 0 7%,transparent 8%),
+    radial-gradient(circle,rgba(196,169,130,.18),rgba(196,169,130,.02) 62%,transparent 70%);
+  box-shadow:0 0 35px rgba(196,169,130,.14);
+}
+html[data-theme="dark"] .hero{
+  position:relative;
+}
+html[data-theme="dark"] .hero:before{
+  content:"";
+  position:absolute;
+  width:2px;
+  height:2px;
+  top:13%;
+  left:9%;
+  border-radius:50%;
+  background:#f4eee2;
+  box-shadow:
+    70px 35px #f4eee2,
+    150px 8px #c9d4e7,
+    250px 72px #f4eee2,
+    390px 28px #c9d4e7,
+    520px 110px #f4eee2,
+    650px 48px #f4eee2,
+    760px 135px #c9d4e7;
+  opacity:.5;
+  pointer-events:none;
+}
+
+/* Sections should feel like different places after sunset */
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .feature-section,
+html[data-theme="dark"] .studio-section,
+html[data-theme="dark"] .newsletter{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.012),transparent 45%),
+    var(--surface);
+}
+html[data-theme="dark"] .quote-section{
+  background:
+    radial-gradient(circle at 50% 40%,rgba(196,169,130,.07),transparent 32%),
+    #0b0b0a;
+}
+html[data-theme="dark"] .trust-strip{
+  box-shadow:inset 0 12px 30px rgba(0,0,0,.18),inset 0 -12px 30px rgba(0,0,0,.18);
+}
+
+/* Smooth transition between day and night */
+html[data-theme] body,
+html[data-theme] .site-header,
+html[data-theme] .announcement,
+html[data-theme] .section,
+html[data-theme] .feature-section,
+html[data-theme] .studio-section,
+html[data-theme] .newsletter,
+html[data-theme] .quote-section,
+html[data-theme] .page-hero,
+html[data-theme] .trust-strip,
+html[data-theme] .product-card,
+html[data-theme] .promo-box,
+html[data-theme] .values-grid>div,
+html[data-theme] .contact-grid,
+html[data-theme] footer{
+  transition:background-color .8s ease,color .8s ease,border-color .8s ease,box-shadow .8s ease;
+}
