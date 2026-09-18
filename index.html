@@ -29,7 +29,7 @@
 
     <div class="header-actions"><a class="account-btn" href="account.html">Konto</a>
       <button class="icon-btn" data-open-search aria-label="Szukaj">⌕</button>
-      <button class="cart-btn" data-open-cart>Torba <span id="cartCount">0</span></button><a class="order-btn" href="checkout.html">Zamówienie</a>
+      <button class="cart-btn" type="button" data-open-cart onclick="document.getElementById('cartDrawer')?.classList.add('open');document.getElementById('backdrop')?.classList.add('open');document.body.classList.add('no-scroll')">Torba <span id="cartCount">0</span></button><a class="order-btn" href="checkout.html">Zamówienie</a>
       <button class="menu-btn" data-menu aria-label="Otwórz menu"><span></span><span></span></button>
     </div>
   </header>
