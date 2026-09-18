@@ -29,7 +29,7 @@
 
     <div class="header-actions"><a class="account-btn" href="account.html">Konto</a>
       <button class="icon-btn" data-open-search aria-label="Szukaj">⌕</button>
-      <button class="cart-btn" type="button" data-open-cart onclick="document.getElementById('cartDrawer')?.classList.add('open');document.getElementById('backdrop')?.classList.add('open');document.body.classList.add('no-scroll')">Torba <span id="cartCount">0</span></button><a class="order-btn" href="checkout.html">Zamówienie</a>
+      <a class="cart-btn" href="#cartDrawer" data-open-cart>Torba <span id="cartCount">0</span></a><a class="order-btn" href="checkout.html">Zamówienie</a>
       <button class="menu-btn" data-menu aria-label="Otwórz menu"><span></span><span></span></button>
     </div>
   </header>
@@ -183,7 +183,7 @@
   </div>
 
   <aside class="cart-drawer" id="cartDrawer">
-    <div class="drawer-head"><h2>Twoja torba</h2><button data-close-cart>×</button></div>
+    <div class="drawer-head"><h2>Twoja torba</h2><a href="#" data-close-cart aria-label="Zamknij">×</a></div>
     <div id="cartItems" class="cart-items"><p class="empty-cart">Twoja torba jest jeszcze pusta.</p></div>
     <div class="cart-bottom"><div><span>Suma</span><strong id="cartTotal">0 zł</strong></div><button class="btn btn-dark checkout">Przejdź do zamówienia</button></div>
   </aside>
