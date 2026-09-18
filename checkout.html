@@ -19,12 +19,12 @@
 <main class="checkout-page">
 <section class="page-hero"><p class="eyebrow">AURELIA / ZAMÓWIENIE</p><h1>Twoje<br><em>zamówienie.</em></h1><p>Uzupełnij dane dostawy. Płatność podłączymy w kolejnym etapie.</p></section>
 <section class="checkout-layout">
-<form class="checkout-form" id="checkoutForm">
+<form class="checkout-form" id="checkoutForm" novalidate>
 <div class="checkout-card"><p class="eyebrow">01 / Dane kontaktowe</p><h2>Kontakt</h2>
-<div class="form-grid"><label>Imię<input name="firstName" required autocomplete="given-name"></label><label>Nazwisko<input name="lastName" required autocomplete="family-name"></label><label class="full">E-mail<input name="email" type="email" required autocomplete="email"></label><label class="full">Telefon<input name="phone" type="tel" required autocomplete="tel"></label></div></div>
+<div class="form-grid"><label>Imię<input name="firstName" autocomplete="given-name"></label><label>Nazwisko<input name="lastName" autocomplete="family-name"></label><label class="full">E-mail<input name="email" type="email" autocomplete="email"></label><label class="full">Telefon<input name="phone" type="tel" autocomplete="tel"></label></div></div>
 <div class="checkout-card"><p class="eyebrow">02 / Dostawa</p><h2>Adres dostawy</h2>
-<div class="form-grid"><label class="full">Ulica i numer<input name="street" required autocomplete="street-address"></label><label>Kod pocztowy<input name="postalCode" required autocomplete="postal-code"></label><label>Miasto<input name="city" required autocomplete="address-level2"></label><label>Kraj<select name="country"><option value="PL">Polska</option></select></label></div></div>
-<div class="checkout-card"><p class="eyebrow">03 / Płatność</p><h2>Bezpieczna płatność</h2><p class="checkout-note">Na tym etapie zamówienie jest przygotowywane jako demonstracja. Prawdziwe płatności możemy później podłączyć np. przez operatora płatności i backend.</p><label class="consent" id="termsConsent"><input id="termsCheckbox" type="checkbox" required> Akceptuję warunki zamówienia i politykę prywatności.</label><div class="form-feedback" id="termsFeedback" role="alert"></div></div>
+<div class="form-grid"><label class="full">Ulica i numer<input name="street" autocomplete="street-address"></label><label>Kod pocztowy<input name="postalCode" autocomplete="postal-code"></label><label>Miasto<input name="city" autocomplete="address-level2"></label><label>Kraj<select name="country"><option value="PL">Polska</option></select></label></div></div>
+<div class="checkout-card"><p class="eyebrow">03 / Płatność</p><h2>Bezpieczna płatność</h2><p class="checkout-note">Na tym etapie zamówienie jest przygotowywane jako demonstracja. Prawdziwe płatności możemy później podłączyć np. przez operatora płatności i backend.</p><label class="consent" id="termsConsent"><input id="termsCheckbox" type="checkbox"> Akceptuję warunki zamówienia i politykę prywatności.</label><div class="form-feedback" id="termsFeedback" role="alert"></div></div>
 <div class="form-feedback" id="checkoutFeedback" role="alert"></div>
 <button class="btn btn-dark checkout-submit" type="submit">Złóż zamówienie <span>→</span></button>
 </form>
