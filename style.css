@@ -61,10 +61,26 @@ footer{background:#050505;color:var(--text);padding:55px clamp(20px,7vw,100px) 2
  .feature-section{padding:80px 20px}.viewer{height:430px}.chair-3d{transform:translate(-50%,-45%) scale(.82)}.studio-image{height:380px}
  .footer-top{flex-direction:column;gap:30px}.footer-top p{text-align:left}.footer-links span{margin-left:0;width:100%}.newsletter form{display:block;border:0}.newsletter input{width:100%;border-bottom:1px solid var(--line);padding:15px 0}.newsletter .btn{margin-top:12px}.cart-btn{padding:8px 10px}
 }
-/* Elegancki przełącznik motywu */
-.theme-tab{position:fixed;right:0;top:42%;z-index:120;width:42px;height:48px;border:1px solid var(--line);border-right:0;border-radius:12px 0 0 12px;background:var(--surface-2);color:var(--text);box-shadow:0 10px 30px #0005;display:grid;place-items:center;font-size:19px;transition:.25s}.theme-tab:hover{width:48px;color:var(--accent)}
-.theme-panel{position:fixed;right:0;top:0;bottom:0;z-index:130;width:min(330px,88vw);padding:30px;background:var(--surface-2);border-left:1px solid var(--line);box-shadow:-20px 0 60px #0008;transform:translateX(105%);transition:transform .4s cubic-bezier(.22,.61,.36,1)}.theme-panel.open{transform:translateX(0)}
-.theme-panel-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:25px;border-bottom:1px solid var(--line)}.theme-panel-head strong{display:block;font-family:"Playfair Display",serif;font-size:26px;font-weight:500;margin-top:8px}.theme-panel-head button{border:0;background:none;color:var(--text);font-size:28px;line-height:1}
-.theme-option{width:100%;margin-top:12px;padding:16px;border:1px solid var(--line);background:transparent;color:var(--text);display:flex;align-items:center;gap:14px;text-align:left;transition:.25s}.theme-option>span{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:15px}.theme-option div{flex:1}.theme-option strong{display:block;font-size:11px}.theme-option small{display:block;color:var(--muted);font-size:9px;margin-top:4px}.theme-option i{font-style:normal;opacity:0;color:var(--accent)}.theme-option.active{border-color:var(--accent);background:#b59a7812}.theme-option.active i{opacity:1}.theme-backdrop{position:fixed;inset:0;background:#0008;z-index:125;opacity:0;visibility:hidden;transition:.3s}.theme-backdrop.open{opacity:1;visibility:visible}
-body.light-mode{--bg:#f3f1ec;--surface:#ebe8e1;--surface-2:#fffdfa;--text:#181714;--muted:#68665f;--line:#d7d2c9;--accent:#8b6d4b}.light-mode .announcement{background:#e5e1d9;color:#5f5b54}.light-mode .site-header{background:#f3f1ecd9}.light-mode footer{background:#171614}.light-mode .hero-image img,.light-mode .category-card img,.light-mode .product-media img,.light-mode .studio-image img{filter:saturate(.8)}.light-mode .btn-dark{background:#181714;color:#f3f1ec}.light-mode .theme-tab,.light-mode .theme-panel{background:#fffdfa}.light-mode .theme-backdrop{background:#0005}
-@media(max-width:560px){.theme-tab{top:auto;bottom:110px}.theme-panel{width:min(350px,92vw)}}
+
+/* AURELIA appearance switcher */
+.appearance-toggle{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:9999;width:46px;height:52px;border:1px solid var(--line);border-right:0;border-radius:14px 0 0 14px;background:var(--surface-2);color:var(--text);display:grid;place-items:center;cursor:pointer;box-shadow:-8px 8px 30px #0003;font:inherit;font-size:20px;transition:.25s}
+.appearance-toggle:hover{width:52px;color:var(--accent)}
+.appearance-drawer{position:fixed;right:0;top:0;bottom:0;z-index:10001;width:min(350px,90vw);padding:32px;background:var(--surface-2);color:var(--text);border-left:1px solid var(--line);box-shadow:-25px 0 70px #0008;transform:translateX(105%);transition:transform .35s ease}
+.appearance-drawer.open{transform:translateX(0)}
+.appearance-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:25px;border-bottom:1px solid var(--line)}
+.appearance-head strong{display:block;font-family:"Playfair Display",serif;font-size:26px;font-weight:500;margin-top:8px}
+.appearance-head button{border:0;background:none;color:var(--text);font-size:30px;line-height:1;cursor:pointer}
+.appearance-option{width:100%;margin-top:12px;padding:17px;border:1px solid var(--line);background:transparent;color:var(--text);display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;font:inherit;transition:.2s}
+.appearance-option>span{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center}
+.appearance-option div{flex:1}.appearance-option strong{display:block;font-size:11px}.appearance-option small{display:block;color:var(--muted);font-size:9px;margin-top:4px}.appearance-option i{font-style:normal;opacity:0;color:var(--accent)}
+.appearance-option.active{border-color:var(--accent);background:#b59a7812}.appearance-option.active i{opacity:1}
+.appearance-backdrop{position:fixed;inset:0;z-index:10000;background:#0008;opacity:0;visibility:hidden;transition:.25s}
+.appearance-backdrop.open{opacity:1;visibility:visible}
+html[data-theme="light"]{--bg:#f3f1ec;--surface:#ebe8e1;--surface-2:#fffdfa;--text:#181714;--muted:#68665f;--line:#d7d2c9;--accent:#8b6d4b}
+html[data-theme="dark"]{--bg:#0b0b0a;--surface:#111110;--surface-2:#171715;--text:#eeeae2;--muted:#8e8b84;--line:#282824;--accent:#b59a78}
+html[data-theme="light"] .announcement{background:#e5e1d9;color:#5f5b54}
+html[data-theme="light"] .site-header{background:#f3f1ecd9}
+html[data-theme="light"] footer{background:#171614}
+html[data-theme="light"] .hero-image img,html[data-theme="light"] .category-card img,html[data-theme="light"] .product-media img,html[data-theme="light"] .studio-image img{filter:saturate(.8)}
+html[data-theme="light"] .btn-dark{background:#181714;color:#f3f1ec}
+@media(max-width:560px){.appearance-toggle{top:auto;bottom:110px}.appearance-drawer{width:min(350px,92vw)}}
