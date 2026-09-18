@@ -4,6 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AURELIA — Zamówienie</title>
 <link rel="stylesheet" href="style.css?v=daynight2026">
+<link rel="stylesheet" href="feedback.css?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <script>(function(){try{document.documentElement.dataset.theme=localStorage.getItem("aurelia-theme")||"light"}catch(e){document.documentElement.dataset.theme="light"}})();</script>
@@ -23,7 +24,8 @@
 <div class="form-grid"><label>Imię<input name="firstName" required autocomplete="given-name"></label><label>Nazwisko<input name="lastName" required autocomplete="family-name"></label><label class="full">E-mail<input name="email" type="email" required autocomplete="email"></label><label class="full">Telefon<input name="phone" type="tel" required autocomplete="tel"></label></div></div>
 <div class="checkout-card"><p class="eyebrow">02 / Dostawa</p><h2>Adres dostawy</h2>
 <div class="form-grid"><label class="full">Ulica i numer<input name="street" required autocomplete="street-address"></label><label>Kod pocztowy<input name="postalCode" required autocomplete="postal-code"></label><label>Miasto<input name="city" required autocomplete="address-level2"></label><label>Kraj<select name="country"><option value="PL">Polska</option></select></label></div></div>
-<div class="checkout-card"><p class="eyebrow">03 / Płatność</p><h2>Bezpieczna płatność</h2><p class="checkout-note">Na tym etapie zamówienie jest przygotowywane jako demonstracja. Prawdziwe płatności możemy później podłączyć np. przez operatora płatności i backend.</p><label class="consent"><input type="checkbox" required> Akceptuję warunki zamówienia i politykę prywatności.</label></div>
+<div class="checkout-card"><p class="eyebrow">03 / Płatność</p><h2>Bezpieczna płatność</h2><p class="checkout-note">Na tym etapie zamówienie jest przygotowywane jako demonstracja. Prawdziwe płatności możemy później podłączyć np. przez operatora płatności i backend.</p><label class="consent" id="termsConsent"><input id="termsCheckbox" type="checkbox" required> Akceptuję warunki zamówienia i politykę prywatności.</label><div class="form-feedback" id="termsFeedback" role="alert"></div></div>
+<div class="form-feedback" id="checkoutFeedback" role="alert"></div>
 <button class="btn btn-dark checkout-submit" type="submit">Złóż zamówienie <span>→</span></button>
 </form>
 <aside class="checkout-summary"><p class="eyebrow">Podsumowanie</p><h2>Twoja torba</h2><div id="checkoutItems"></div><div class="summary-line"><span>Produkty</span><strong id="checkoutSubtotal">0 zł</strong></div><div class="summary-line"><span>Dostawa</span><strong id="checkoutShipping">0 zł</strong></div><div class="summary-total"><span>Razem</span><strong id="checkoutTotal">0 zł</strong></div><p class="checkout-small">Darmowa dostawa od 2 500 zł.</p></aside>
@@ -34,6 +36,6 @@
 <aside class="appearance-drawer" id="appearanceDrawer" aria-hidden="true"><div class="appearance-head"><div><p class="eyebrow">Wygląd</p><strong>Tryb strony</strong></div><button id="appearanceClose" type="button" aria-label="Zamknij">×</button></div><button class="appearance-option" type="button" data-appearance="light"><span>☼</span><div><strong>Jasny</strong><small>Naturalny i lekki</small></div><i>✓</i></button><button class="appearance-option" type="button" data-appearance="dark"><span>☾</span><div><strong>Ciemny</strong><small>Elegancki i spokojny</small></div><i>✓</i></button></aside>
 <div class="appearance-backdrop" id="appearanceBackdrop"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js?v=2"></script>
-  <script src="appearance.js"></script><script src="checkout.js?v=2"></script>
+<script src="supabase-config.js?v=2"></script>
+<script src="appearance.js"></script><script src="checkout.js?v=3"></script>
 </body></html>
