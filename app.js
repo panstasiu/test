@@ -39,3 +39,10 @@ $(".checkout")?.addEventListener("click",()=>toast(state.cart.length?"Demo sklep
 
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeSearch();closeCart();menu?.classList.remove("open")}if(e.key==="/"&&document.activeElement?.tagName!=="INPUT"){e.preventDefault();openSearch()}});
 const progress=document.createElement("div");progress.className="scroll-progress";document.body.appendChild(progress);window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h>0?(scrollY/h)*100:0)+"%"},{passive:true});
+
+// Motyw strony — zapisuje wybór użytkownika
+const themeTab=$("#themeTab"),themePanel=$("#themePanel"),themeClose=$("#themeClose"),themeBackdrop=$("#themeBackdrop"),themeOptions=$$(".theme-option");
+function setTheme(theme){document.body.classList.toggle("light-mode",theme==="light");themeOptions.forEach(b=>b.classList.toggle("active",b.dataset.theme===theme));localStorage.setItem("aurelia-theme",theme)}
+function openTheme(){themePanel?.classList.add("open");themeBackdrop?.classList.add("open");themePanel?.setAttribute("aria-hidden","false")}
+function closeTheme(){themePanel?.classList.remove("open");themeBackdrop?.classList.remove("open");themePanel?.setAttribute("aria-hidden","true")}
+const savedTheme=localStorage.getItem("aurelia-theme")||"dark";setTheme(savedTheme);themeTab?.addEventListener("click",openTheme);themeClose?.addEventListener("click",closeTheme);themeBackdrop?.addEventListener("click",closeTheme);themeOptions.forEach(b=>b.addEventListener("click",()=>{setTheme(b.dataset.theme);closeTheme();toast(b.dataset.theme==="dark"?"Tryb ciemny ✓":"Tryb jasny ✓")}));
