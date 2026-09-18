@@ -21,9 +21,27 @@ document.addEventListener("click",e=>{const btn=e.target.closest(".add-product")
 renderCart();updateCartCount();
 
 const drawer=$("#cartDrawer"),backdrop=$("#backdrop");
-function openCart(){drawer?.classList.add("open");backdrop?.classList.add("open");document.body.classList.add("no-scroll")}
-function closeCart(){drawer?.classList.remove("open");backdrop?.classList.remove("open");document.body.classList.remove("no-scroll")}
-$$("[data-open-cart]").forEach(b=>b.onclick=openCart);$$("[data-close-cart]").forEach(b=>b.onclick=closeCart);backdrop?.addEventListener("click",closeCart);
+function openCart(){
+  const d=$("#cartDrawer"), b=$("#backdrop");
+  if(!d)return;
+  d.classList.add("open");
+  b?.classList.add("open");
+  document.body.classList.add("no-scroll");
+}
+function closeCart(){
+  const d=$("#cartDrawer"), b=$("#backdrop");
+  d?.classList.remove("open");
+  b?.classList.remove("open");
+  document.body.classList.remove("no-scroll");
+}
+// Robust delegated handlers: the Torba button keeps working even if header markup is rebuilt.
+document.addEventListener("click",e=>{
+  const open=e.target.closest("[data-open-cart]");
+  if(open){e.preventDefault();openCart();return}
+  const close=e.target.closest("[data-close-cart]");
+  if(close){e.preventDefault();closeCart();return}
+  if(e.target===backdrop)closeCart();
+});
 
 const search=$("#searchOverlay"),input=$("#searchInput"),result=$("#searchResult");
 function openSearch(){if(!search)return;search.classList.add("open");input?.focus();document.body.classList.add("no-scroll")}
