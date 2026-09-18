@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AURELIA — Konto</title>
+<link rel="stylesheet" href="style.css?v=account2026">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<script>(function(){try{document.documentElement.dataset.theme=localStorage.getItem("aurelia-theme")||"light"}catch(e){document.documentElement.dataset.theme="light"}})();</script>
+</head>
+<body>
+<div class="announcement">AURELIA <span>•</span> Twoje konto i Twoje zamówienia</div>
+<header class="site-header">
+<a class="brand" href="index.html"><span class="brand-mark">A</span><span>AURELIA</span></a>
+<nav class="desktop-nav"><a href="index.html">Start</a><a href="shop.html">Sklep</a><a href="about.html">Studio</a><a href="contact.html">Kontakt</a></nav>
+<div class="header-actions"><a class="cart-btn" href="shop.html">← Sklep</a><a class="order-btn" href="checkout.html">Zamówienie</a></div>
+</header>
+<main class="account-page">
+<section class="page-hero"><p class="eyebrow">AURELIA / KONTO</p><h1>Twoje<br><em>miejsce.</em></h1><p>Zaloguj się albo utwórz konto, aby wygodniej wracać do AURELIA.</p></section>
+<section class="account-layout">
+<div class="account-card" id="authCard">
+<div class="account-tabs"><button class="account-tab active" data-auth-tab="login">Logowanie</button><button class="account-tab" data-auth-tab="register">Rejestracja</button></div>
+<form id="loginForm" class="account-form">
+<label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl"></label>
+<label>Hasło<input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Minimum 6 znaków"></label>
+<button class="btn btn-dark" type="submit">Zaloguj się <span>→</span></button>
+<button class="account-link" type="button" id="showReset">Nie pamiętasz hasła?</button>
+</form>
+<form id="registerForm" class="account-form hidden">
+<div class="account-form-grid"><label>Imię<input name="firstName" autocomplete="given-name" required placeholder="Jan"></label><label>Nazwisko<input name="lastName" autocomplete="family-name" required placeholder="Kowalski"></label></div>
+<label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl"></label>
+<label>Hasło<input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="Minimum 6 znaków"></label>
+<label>Powtórz hasło<input name="passwordConfirm" type="password" autocomplete="new-password" required minlength="6" placeholder="Powtórz hasło"></label>
+<label class="account-consent"><input type="checkbox" required> Akceptuję zasady korzystania z konta.</label>
+<button class="btn btn-dark" type="submit">Utwórz konto <span>→</span></button>
+</form>
+<form id="resetForm" class="account-form hidden">
+<p class="account-note">Podaj e-mail, a wyślemy Ci link do ustawienia nowego hasła.</p>
+<label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl"></label>
+<button class="btn btn-dark" type="submit">Wyślij link <span>→</span></button>
+<button class="account-link" type="button" id="backToLogin">← Wróć do logowania</button>
+</form>
+<div id="accountMessage" class="account-message" aria-live="polite"></div>
+</div>
+<aside class="account-card account-benefits">
+<p class="eyebrow">Po zalogowaniu</p><h2>Wygodniej z AURELIA.</h2>
+<div><strong>01</strong><span>Szybsze składanie kolejnych zamówień.</span></div>
+<div><strong>02</strong><span>Dane kontaktowe w jednym miejscu.</span></div>
+<div><strong>03</strong><span>W przyszłości: historia zamówień i status dostawy.</span></div>
+</aside>
+</section>
+<section class="account-profile hidden" id="profileCard">
+<div><p class="eyebrow">ZALOGOWANO</p><h2 id="profileName">Twoje konto</h2><p id="profileEmail" class="account-note"></p></div>
+<button class="btn btn-dark" id="logoutBtn" type="button">Wyloguj się</button>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<button class="appearance-toggle" id="appearanceToggle" type="button" aria-label="Otwórz ustawienia wyglądu"><span>☼</span></button>
+<aside class="appearance-drawer" id="appearanceDrawer" aria-hidden="true"><div class="appearance-head"><div><p class="eyebrow">Wygląd</p><strong>Tryb strony</strong></div><button id="appearanceClose" type="button" aria-label="Zamknij">×</button></div><button class="appearance-option" type="button" data-appearance="light"><span>☼</span><div><strong>Jasny</strong><small>Naturalny i lekki</small></div><i>✓</i></button><button class="appearance-option" type="button" data-appearance="dark"><span>☾</span><div><strong>Ciemny</strong><small>Elegancki i spokojny</small></div><i>✓</i></button></aside>
+<div class="appearance-backdrop" id="appearanceBackdrop"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js?v=2"></script>
+<script src="appearance.js"></script>
+<script src="account.js?v=1"></script>
+</body></html>
