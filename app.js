@@ -17,17 +17,15 @@ function renderCart(){
   const sum=state.cart.reduce((a,p)=>a+(Number(p.price)||0)*(Number(p.qty)||1),0);
   if(total)total.textContent=money(sum);
   if(!state.cart.length){items.innerHTML='<p class="empty-cart">Twoja torba jest jeszcze pusta.</p>';return}
-  items.innerHTML=state.cart.map((p,i)=>'<div class="cart-row"><img class="cart-thumb" src="'+(p.img||"")+'" alt=""><div><h4>'+p.name+'</h4><p>'+money(Number(p.price)||0)+' × '+(p.qty||1)+'</p><div class="cart-qty"><button type="button" aria-label="Zmniejsz ilość" data-qty="'+i+'" data-dir="-1">−</button><span>'+(p.qty||1)+'</span><button type="button" aria-label="Zwiększ ilość" data-qty="'+i+'" data-dir="1">+</button></div></div><button type="button" class="remove-item" data-remove="'+i+'" aria-label="Usuń produkt">×</button></div>').join("");
+  items.innerHTML=state.cart.map((p,i)=>{
+    const qty=Number(p.qty)||1;
+    return '<div class="cart-row"><img class="cart-thumb" src="'+(p.img||"")+'" alt=""><div class="cart-product-info"><h4>'+p.name+'</h4><p>'+money(Number(p.price)||0)+' × '+qty+'</p><div class="cart-qty" role="group" aria-label="Ilość produktu"><button type="button" class="cart-qty-btn" aria-label="Zmniejsz ilość" onclick="AURELIA_CART_QTY.change('+i+',-1);return false">−</button><span class="cart-qty-value">'+qty+'</span><button type="button" class="cart-qty-btn" aria-label="Zwiększ ilość" onclick="AURELIA_CART_QTY.change('+i+',1);return false">+</button></div></div><button type="button" class="remove-item" aria-label="Usuń produkt" onclick="AURELIA_CART_QTY.remove('+i+');return false">×</button></div>';
+  }).join("");
 }
 const save=()=>{localStorage.setItem("aurelia-cart",JSON.stringify(state.cart));localStorage.setItem("aurelia-favorites",JSON.stringify(state.favorites));renderCart();updateCartCount()};
+window.AURELIA_CART_QTY={change(index,delta){const p=state.cart[Number(index)];if(!p)return;p.qty=Math.max(1,(Number(p.qty)||1)+Number(delta));save()},remove(index){const i=Number(index);if(!Number.isInteger(i)||!state.cart[i])return;state.cart.splice(i,1);save();toast("Usunięto produkt")}};
 function addProduct(btn){const card=btn.closest(".product-card");if(!card)return;const id=card.dataset.id;if(!id)return;const existing=state.cart.find(p=>p.id===id);if(existing)existing.qty=(Number(existing.qty)||1)+1;else state.cart.push({id:id,name:card.dataset.name||"Produkt",price:Number(card.dataset.price)||0,img:$("img",card)?.src||"",qty:1});save();toast("Dodano do torby ✓");btn.textContent="Dodano ✓";clearTimeout(btn._cartTimer);btn._cartTimer=setTimeout(()=>btn.textContent="Dodaj do torby",1000)}
-document.addEventListener("click",e=>{
-  const qty=e.target.closest(".cart-qty button");
-  if(qty){e.preventDefault();e.stopPropagation();const i=Number(qty.dataset.qty),p=state.cart[i];if(!p)return;p.qty=Math.max(1,(Number(p.qty)||1)+Number(qty.dataset.dir||0));save();return}
-  const remove=e.target.closest("[data-remove]");
-  if(remove){e.preventDefault();e.stopPropagation();const i=Number(remove.dataset.remove);if(Number.isInteger(i)){state.cart.splice(i,1);save();toast("Usunięto produkt")}return}
-  const btn=e.target.closest(".add-product");if(btn){e.preventDefault();addProduct(btn)}
-});
+document.addEventListener("click",e=>{const btn=e.target.closest(".add-product");if(btn){e.preventDefault();addProduct(btn)}});
 renderCart();updateCartCount();
 const openCart=()=>window.AURELIA_CART?.open();const closeCart=()=>window.AURELIA_CART?.close();
 const search=$("#searchOverlay"),input=$("#searchInput"),result=$("#searchResult");
